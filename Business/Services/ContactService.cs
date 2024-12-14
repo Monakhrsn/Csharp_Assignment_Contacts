@@ -23,7 +23,8 @@ public class ContactService(IFileService fileService) : IContactService
 
     public void SaveContactsToList()
     {
-        var json = JsonSerializer.Serialize(_contacts);
+        var jsonSerializerOptions = new JsonSerializerOptions { WriteIndented = true };
+        var json = JsonSerializer.Serialize(_contacts, jsonSerializerOptions);
         _fileService.SaveContentToFile(json);
     }
 

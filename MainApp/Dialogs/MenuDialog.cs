@@ -37,40 +37,44 @@ public class MenuDialog(IContactService contactService)
         Console.Clear();
         Console.WriteLine("-------- ADD NEW CONTACT --------");
         
-        Console.WriteLine("Enter Contact's First name: ");
+        Console.WriteLine("Enter First name: ");
         contact.FirstName = Console.ReadLine()!;
         
-        Console.WriteLine("Enter Contact's Last name: ");
+        Console.WriteLine("Enter Last name: ");
         contact.LastName = Console.ReadLine()!;
         
-        Console.WriteLine("Enter Contact's Email: ");
+        Console.WriteLine("Enter Email: ");
         contact.Email = Console.ReadLine()!;
         
-        Console.WriteLine("Enter Contact's Phone: ");
+        Console.WriteLine("Enter Phone number: ");
         contact.Phone = Console.ReadLine()!;
         
-        Console.WriteLine("Enter Contact's Address: ");
-        contact.Address = Console.ReadLine()!;
+        Console.WriteLine("Enter Street address: ");
+        contact.StreetAddress = Console.ReadLine()!;
+        
+        Console.WriteLine("Enter Postal code: ");
+        contact.PostalCode = Console.ReadLine()!;
+        
+        Console.WriteLine("Enter City: ");
+        contact.City = Console.ReadLine()!;
         
         _contactService.AddContact(contact);
     }
 
     public void ViewAllContacts()
     {
-        Console.Clear();
-        Console.WriteLine("-------- VIEW ALL CONTACT --------");
+        Console.WriteLine("-------- VIEW ALL CONTACTS --------");
         Console.WriteLine("1) Add New Contact");
 
         foreach (var contact in _contactService.GetAllContacts())
         {
             Console.WriteLine($"Contact Id: {contact.Id}");
-            Console.WriteLine($"Contact's Name: {contact.FirstName} {contact.LastName}");
-            Console.WriteLine($"Contact's Email: {contact.Email}");
-            Console.WriteLine($"Contact's Phone: {contact.Phone}");
-            Console.WriteLine($"Contact's Address: {contact.Address}");
-            Console.WriteLine("");
-            
-            Console.ReadKey();
+            Console.WriteLine($"Name: {contact.FirstName} {contact.LastName}");
+            Console.WriteLine($"Email: {contact.Email}");
+            Console.WriteLine($"Phone number: {contact.Phone}");
+            Console.WriteLine($"Address: {contact.StreetAddress}, {contact.PostalCode}, {contact.City}");
+            Console.WriteLine("----------------");
         }
+        Console.ReadKey();
     }
 }

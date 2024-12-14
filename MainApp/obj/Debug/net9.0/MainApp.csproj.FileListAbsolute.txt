@@ -18,3 +18,4 @@
 /Users/RiderProjects/Csharp_Assignment_Contacts/MainApp/obj/Debug/net9.0/MainApp.pdb
 /Users/RiderProjects/Csharp_Assignment_Contacts/MainApp/obj/Debug/net9.0/MainApp.genruntimeconfig.cache
 /Users/RiderProjects/Csharp_Assignment_Contacts/MainApp/obj/Debug/net9.0/ref/MainApp.dll
+/Users/RiderProjects/Csharp_Assignment_Contacts/MainApp/obj/Debug/net9.0/MainApp.sourcelink.json

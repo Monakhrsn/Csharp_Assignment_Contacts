@@ -17,6 +17,7 @@ public class ContactService(IFileService fileService) : IContactService
     
     public IEnumerable<Contact> GetAllContacts()
     {
+        PopulateContentFromFile();
         return _contacts;
     }
 

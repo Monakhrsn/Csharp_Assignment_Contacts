@@ -1,0 +1,11 @@
+/Users/RiderProjects/Csharp_Assignment_Contacts/Business/bin/Debug/net9.0/Business.deps.json
+/Users/RiderProjects/Csharp_Assignment_Contacts/Business/bin/Debug/net9.0/Business.dll
+/Users/RiderProjects/Csharp_Assignment_Contacts/Business/bin/Debug/net9.0/Business.pdb
+/Users/RiderProjects/Csharp_Assignment_Contacts/Business/obj/Debug/net9.0/Business.GeneratedMSBuildEditorConfig.editorconfig
+/Users/RiderProjects/Csharp_Assignment_Contacts/Business/obj/Debug/net9.0/Business.AssemblyInfoInputs.cache
+/Users/RiderProjects/Csharp_Assignment_Contacts/Business/obj/Debug/net9.0/Business.AssemblyInfo.cs
+/Users/RiderProjects/Csharp_Assignment_Contacts/Business/obj/Debug/net9.0/Business.csproj.CoreCompileInputs.cache
+/Users/RiderProjects/Csharp_Assignment_Contacts/Business/obj/Debug/net9.0/Business.dll
+/Users/RiderProjects/Csharp_Assignment_Contacts/Business/obj/Debug/net9.0/refint/Business.dll
+/Users/RiderProjects/Csharp_Assignment_Contacts/Business/obj/Debug/net9.0/Business.pdb
+/Users/RiderProjects/Csharp_Assignment_Contacts/Business/obj/Debug/net9.0/ref/Business.dll

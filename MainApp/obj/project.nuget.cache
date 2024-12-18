@@ -1,11 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "O/dLUBG/hPo=",
+  "dgSpecHash": "MmlJUHwcyKI=",
   "success": true,
   "projectFilePath": "/Users/RiderProjects/Csharp_Assignment_Contacts/MainApp/MainApp.csproj",
   "expectedPackageFiles": [
+    "/Users/monakhorasani/.nuget/packages/castle.core/5.1.1/castle.core.5.1.1.nupkg.sha512",
     "/Users/monakhorasani/.nuget/packages/microsoft.extensions.dependencyinjection/9.0.0/microsoft.extensions.dependencyinjection.9.0.0.nupkg.sha512",
-    "/Users/monakhorasani/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/9.0.0/microsoft.extensions.dependencyinjection.abstractions.9.0.0.nupkg.sha512"
+    "/Users/monakhorasani/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/9.0.0/microsoft.extensions.dependencyinjection.abstractions.9.0.0.nupkg.sha512",
+    "/Users/monakhorasani/.nuget/packages/moq/4.20.72/moq.4.20.72.nupkg.sha512",
+    "/Users/monakhorasani/.nuget/packages/system.diagnostics.eventlog/6.0.0/system.diagnostics.eventlog.6.0.0.nupkg.sha512"
   ],
   "logs": []
 }

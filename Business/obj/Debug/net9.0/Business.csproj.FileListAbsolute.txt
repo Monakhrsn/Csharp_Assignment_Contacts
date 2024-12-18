@@ -10,3 +10,4 @@
 /Users/RiderProjects/Csharp_Assignment_Contacts/Business/obj/Debug/net9.0/Business.pdb
 /Users/RiderProjects/Csharp_Assignment_Contacts/Business/obj/Debug/net9.0/ref/Business.dll
 /Users/RiderProjects/Csharp_Assignment_Contacts/Business/obj/Debug/net9.0/Business.sourcelink.json
+/Users/RiderProjects/Csharp_Assignment_Contacts/Business/obj/Debug/net9.0/Business.csproj.AssemblyReference.cache

@@ -9,10 +9,12 @@ public class ContactService(IFileService fileService) : IContactService
     private readonly IFileService _fileService = fileService;
     private List<Contact> _contacts = [];
     
-    public void AddContact(Contact contact)
+    public bool AddContact(Contact contact)
     {
         _contacts.Add(contact);
         SaveContactsToList();
+        
+        return true;
     }
     
     public IEnumerable<Contact> GetAllContacts()

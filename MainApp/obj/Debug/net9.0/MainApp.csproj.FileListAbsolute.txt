@@ -19,3 +19,8 @@
 /Users/RiderProjects/Csharp_Assignment_Contacts/MainApp/obj/Debug/net9.0/MainApp.genruntimeconfig.cache
 /Users/RiderProjects/Csharp_Assignment_Contacts/MainApp/obj/Debug/net9.0/ref/MainApp.dll
 /Users/RiderProjects/Csharp_Assignment_Contacts/MainApp/obj/Debug/net9.0/MainApp.sourcelink.json
+/Users/RiderProjects/Csharp_Assignment_Contacts/MainApp/bin/Debug/net9.0/Castle.Core.dll
+/Users/RiderProjects/Csharp_Assignment_Contacts/MainApp/bin/Debug/net9.0/Moq.dll
+/Users/RiderProjects/Csharp_Assignment_Contacts/MainApp/bin/Debug/net9.0/System.Diagnostics.EventLog.dll
+/Users/RiderProjects/Csharp_Assignment_Contacts/MainApp/bin/Debug/net9.0/runtimes/win/lib/net6.0/System.Diagnostics.EventLog.Messages.dll
+/Users/RiderProjects/Csharp_Assignment_Contacts/MainApp/bin/Debug/net9.0/runtimes/win/lib/net6.0/System.Diagnostics.EventLog.dll

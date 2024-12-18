@@ -4,6 +4,6 @@ namespace Business.Interfaces;
 
 public interface IContactService
 {
-    void AddContact(Contact contact);
+    bool AddContact(Contact contact);
     IEnumerable<Contact> GetAllContacts();
 }

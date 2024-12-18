@@ -19,7 +19,7 @@ public class FileService : IFileService
         return File.Exists(_filePath) ? File.ReadAllText(_filePath) : null!;
     }
     
-    public void SaveContentToFile(string content)
+    public bool SaveContentToFile(string content)
     {
         try
         {
@@ -32,5 +32,6 @@ public class FileService : IFileService
         {
             Debug.WriteLine(ex.Message);
         }
+        return true;
     }
 }

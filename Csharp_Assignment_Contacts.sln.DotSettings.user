@@ -7,6 +7,7 @@
   &lt;TestAncestor&gt;
     &lt;TestId&gt;xUnit::BE1AA761-B4AB-4E53-9723-1B23A733422D::net9.0::Business.Tests.Factories.ContactFactory_Tests&lt;/TestId&gt;
     &lt;TestId&gt;xUnit::BE1AA761-B4AB-4E53-9723-1B23A733422D::net9.0::Business.Tests.Services.ContactService_Tests.AddContact_ShouldReturnTrue_WhenContactSuccessfullyCreated&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::BE1AA761-B4AB-4E53-9723-1B23A733422D::net9.0::Business.Tests.Services.ContactService_Tests.GetAllContacts_ShouldReturnContacts_WhenContentIsRetrievedFromFileSuccessfully&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
 	</wpf:ResourceDictionary>

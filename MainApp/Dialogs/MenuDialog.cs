@@ -5,6 +5,7 @@ namespace MainApp.Dialogs;
 
 public class MenuDialog(IContactService contactService)
 {
+    private bool _initializing = true;
     private readonly IContactService _contactService = contactService;
 
     public void MainMenu()
@@ -12,12 +13,21 @@ public class MenuDialog(IContactService contactService)
         while (true)
         {
             Console.Clear();
+            
+            // View all saved contacts
+            if (_initializing)
+            {
+                ViewAllContacts();
+                _initializing = false;
+            }
+
+            
             Console.WriteLine("-------- MAIN MENU --------");
             Console.WriteLine("1) Add New Contact");
             Console.WriteLine("2) View All Contacts");
             Console.WriteLine("Select Option: ");
             var option = Console.ReadLine();
-
+            
             switch (option)
             {
                 case "1":
@@ -59,22 +69,40 @@ public class MenuDialog(IContactService contactService)
         contact.City = Console.ReadLine()!;
         
         _contactService.AddContact(contact);
+        
+        Console.Clear();
+        Console.WriteLine("-------- Contact Added Successfully --------");
+        Console.ReadLine();
     }
 
     public void ViewAllContacts()
     {
-        Console.WriteLine("-------- VIEW ALL CONTACTS --------");
-        Console.WriteLine("1) Add New Contact");
+        var contacts = _contactService.GetAllContacts();
+        
+        Console.Clear();
 
-        foreach (var contact in _contactService.GetAllContacts())
+        if (contacts.Any())
         {
+            Console.WriteLine("--------------------------");
+            Console.WriteLine("-------- CONTACTS --------");
+        }
+        else
+        {
+            Console.WriteLine("-------- No Contacts To View --------");
+        }
+            
+
+        foreach (var contact in contacts)
+        {
+            Console.WriteLine("--------------------------");
             Console.WriteLine($"Contact Id: {contact.Id}");
             Console.WriteLine($"Name: {contact.FirstName} {contact.LastName}");
             Console.WriteLine($"Email: {contact.Email}");
             Console.WriteLine($"Phone number: {contact.Phone}");
             Console.WriteLine($"Address: {contact.StreetAddress}, {contact.PostalCode}, {contact.City}");
-            Console.WriteLine("----------------");
         }
-        Console.ReadKey();
+
+        if (!_initializing)
+            Console.ReadKey();
     }
 }

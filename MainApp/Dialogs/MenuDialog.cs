@@ -14,7 +14,6 @@ public class MenuDialog(IContactService contactService)
         {
             Console.Clear();
             
-            // View all saved contacts
             if (_initializing)
             {
                 ViewAllContacts();

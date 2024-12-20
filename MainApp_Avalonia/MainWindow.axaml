@@ -1,0 +1,26 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="MainApp_Avalonia.MainWindow"
+        Title="MainApp_Avalonia">
+        <Grid>
+                <!-- Define two columns: one for the button, one for the list -->
+                <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/> <!-- Auto-sized for the button -->
+                        <ColumnDefinition Width="*"/>   <!-- Takes the remaining space for the list -->
+                </Grid.ColumnDefinitions>
+
+                <!-- The button in the first column -->
+                <Button Content="Hello World" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Click="OnClick"/>
+                <Button Content="Hello World 2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Click="OnClick"/>
+
+                <!-- The list in the second column -->
+                <ListBox Grid.Column="1" Margin="10,0,0,0">
+                        <ListBoxItem>Item 1</ListBoxItem>
+                        <ListBoxItem>Item 2</ListBoxItem>
+                        <ListBoxItem>Item 3</ListBoxItem>
+                </ListBox>
+        </Grid>
+</Window>

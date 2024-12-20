@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business", "Business\Busine
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business.Tests", "Business.Tests\Business.Tests.csproj", "{BE1AA761-B4AB-4E53-9723-1B23A733422D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MainApp_Avalonia", "MainApp_Avalonia\MainApp_Avalonia.csproj", "{DF65E062-D9E4-4A1C-9D74-923689EC38A1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{BE1AA761-B4AB-4E53-9723-1B23A733422D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE1AA761-B4AB-4E53-9723-1B23A733422D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE1AA761-B4AB-4E53-9723-1B23A733422D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF65E062-D9E4-4A1C-9D74-923689EC38A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF65E062-D9E4-4A1C-9D74-923689EC38A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF65E062-D9E4-4A1C-9D74-923689EC38A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF65E062-D9E4-4A1C-9D74-923689EC38A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

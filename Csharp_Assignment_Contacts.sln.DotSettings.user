@@ -4,10 +4,6 @@
 	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=7020124F_002D9FFC_002D4AC3_002D8F3D_002DAAB8E0240759_002Ff_003APath_002Ecs_002Fl_003A_002E_002E_003F_002E_002E_003Fmonakhorasani_003FLibrary_003FApplication_0020Support_003FJetBrains_003FRider2024_002E3_003Fresharper_002Dhost_003FSourcesCache_003Fe7cff0cafd46ae227f02475ecd55a28fa4fe7cd94c0225285c891fd9adbe2_003FPath_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
 	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=7020124F_002D9FFC_002D4AC3_002D8F3D_002DAAB8E0240759_002Ff_003AString_002Ecs_002Fl_003A_002E_002E_003F_002E_002E_003Fmonakhorasani_003FLibrary_003FApplication_0020Support_003FJetBrains_003FRider2024_002E3_003Fresharper_002Dhost_003FSourcesCache_003Fdad3f0ebff0dd1f8e1d244c3c44c649be8228d5e25fb37ef1de7f3c0e261c_003FString_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=4a1ca872_002D1bc8_002D41f3_002D8d0e_002D35277ce59025/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="ContactFactory_Tests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;TestAncestor&gt;
-    &lt;TestId&gt;xUnit::BE1AA761-B4AB-4E53-9723-1B23A733422D::net9.0::Business.Tests.Factories.ContactFactory_Tests&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::BE1AA761-B4AB-4E53-9723-1B23A733422D::net9.0::Business.Tests.Services.ContactService_Tests.AddContact_ShouldReturnTrue_WhenContactSuccessfullyCreated&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::BE1AA761-B4AB-4E53-9723-1B23A733422D::net9.0::Business.Tests.Services.ContactService_Tests.GetAllContacts_ShouldReturnContacts_WhenContentIsRetrievedFromFileSuccessfully&lt;/TestId&gt;
-  &lt;/TestAncestor&gt;
+  &lt;Project Location="/Users/RiderProjects/Csharp_Assignment_Contacts/Business.Tests" Presentation="&amp;lt;Business.Tests&amp;gt;" /&gt;
 &lt;/SessionState&gt;</s:String>
 	</wpf:ResourceDictionary>

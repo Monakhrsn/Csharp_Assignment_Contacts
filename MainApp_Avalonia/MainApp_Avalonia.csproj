@@ -18,5 +18,8 @@
             <IncludeAssets Condition="'$(Configuration)' != 'Debug'">None</IncludeAssets>
             <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
         </PackageReference>
+        <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+        <!-- Add Business project as a reference -->
+        <ProjectReference Include="..\Business\Business.csproj" />
     </ItemGroup>
 </Project>

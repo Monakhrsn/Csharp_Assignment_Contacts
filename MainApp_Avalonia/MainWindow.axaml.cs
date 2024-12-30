@@ -1,31 +1,53 @@
+using System;
 using System.Collections.ObjectModel;
+using System.Security.Authentication;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Input;
+using Avalonia.Input.Platform;
 using Avalonia.Interactivity;
+using Business.Interfaces;
+using Business.Models;
+using Microsoft.Extensions.DependencyInjection;
+using MsBox.Avalonia;
 using static Avalonia.Controls.DataGridRowDetailsVisibilityMode;
+
+
 
 namespace MainApp_Avalonia;
 
 public partial class MainWindow : Window
 {
-    // Public property for binding
+    private readonly IContactService _contactService;
+    
+    // Property for binding
     public ObservableCollection<string> Items { get; set; }
 
     public MainWindow()
     {
+        // ChatGpt suggestion: Safely retrieve the service with null checks
+        var services = AppServices.Services
+            ?? throw new InvalidOperationException("Service provider is not initialized.");
+
+        _contactService = services.GetService<IContactService>()
+                          ?? throw new InvalidOperationException("IContactService is not registered");
+        
         InitializeComponent();
 
         // Initialize Items collection
-        Items = new ObservableCollection<string>
-        {
-            "Item 1",
-            "Item 22",
-            "Item 3333"
-        };
+        Items = new ObservableCollection<string>();
+        LoadContacts();
         
         // Set DataContext
         DataContext = this;
+    }
+
+    private void LoadContacts()
+    {
+        foreach (var contact in _contactService.GetAllContacts())
+        {
+            Items.Add(($"{contact.FirstName} {contact.LastName}"));
+        }
     }
     
     private void OnShowList(object sender, RoutedEventArgs e)
@@ -48,27 +70,37 @@ public partial class MainWindow : Window
     
     private void OnAdd_Click(object sender, RoutedEventArgs e)
     {
-        var name = NameInput.Text;
-        var lastName = LastNameInput.Text;
-        
-        var streetAddress = StreetAddressInput.Text;
-        var postalCode = PostalCodeInput.Text;
-        var city = CityInput.Text;
-
-        if (!string.IsNullOrEmpty(name) && 
-            !string.IsNullOrEmpty(lastName) && 
-            !string.IsNullOrEmpty(EmailInput.Text) && 
-            !string.IsNullOrEmpty(PhoneInput.Text) && 
-            !string.IsNullOrEmpty(StreetAddressInput.Text) && 
-            !string.IsNullOrEmpty(PostalCodeInput.Text) && 
-            !string.IsNullOrEmpty(CityInput.Text))
+        var contact = new Contact()
         {
-            Contacts.Items.Add($"{name} {lastName}");
-            Contacts.Items.Add(EmailInput.Text);
-            Contacts.Items.Add(PhoneInput.Text);
-            Contacts.Items.Add($"{streetAddress}, {postalCode}, {city}");
-        }
+            FirstName = NameInput.Text!.Trim(),
+            LastName = LastNameInput.Text!.Trim(),
+            Email = EmailInput.Text!.Trim(),
+            Phone = PhoneInput.Text!.Trim(),
+            StreetAddress = StreetAddressInput.Text!.Trim(),
+            PostalCode = PostalCodeInput.Text!.Trim(),
+            City = CityInput.Text!.Trim(),
+        };
         
+         // Add the contact to the service
+        _contactService.AddContact(contact);
+        
+        // Update the observable collection
+        Items.Add($"{contact.FirstName} {contact.LastName}," +
+                  $" {contact.Email}, {contact.Phone}, " +
+                  $"{contact.StreetAddress}, " +
+                  $"{contact.PostalCode}, " +
+                  $"{contact.City}");
+        
+        // Clear the input fields
+        NameInput.Text = string.Empty;
+        LastNameInput.Text = string.Empty;
+        EmailInput.Text = string.Empty; 
+        PhoneInput.Text = string.Empty;
+        StreetAddressInput.Text = string.Empty;
+        PostalCodeInput.Text = string.Empty;
+        CityInput.Text = string.Empty;
+        
+        // Hide the form and show the contact list view
         ContactForm.IsVisible = false;
         Contacts.IsVisible = true;
     }

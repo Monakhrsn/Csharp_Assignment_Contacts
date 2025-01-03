@@ -2,6 +2,7 @@ using System;
 using System.Security.Authentication.ExtendedProtection;
 using Business.Interfaces;
 using Business.Services;
+using MainApp_Avalonia.Services;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace MainApp_Avalonia;
@@ -17,6 +18,7 @@ public static class AppServices
         Services = new ServiceCollection()
             .AddSingleton<IFileService>(new FileService("Data", "Contacts.json"))
             .AddSingleton<IContactService, ContactService>()
+            .AddSingleton<IMessageService, MessageService>()
             .BuildServiceProvider();
     }
     public static IServiceProvider RegisterServices()

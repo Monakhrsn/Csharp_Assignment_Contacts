@@ -8,10 +8,11 @@ using Avalonia.Input.Platform;
 using Avalonia.Interactivity;
 using Business.Interfaces;
 using Business.Models;
+using MainApp_Avalonia.Services;
 using Microsoft.Extensions.DependencyInjection;
 using MsBox.Avalonia;
 using static Avalonia.Controls.DataGridRowDetailsVisibilityMode;
-
+using InvalidOperationException = System.InvalidOperationException;
 
 
 namespace MainApp_Avalonia;
@@ -19,6 +20,7 @@ namespace MainApp_Avalonia;
 public partial class MainWindow : Window
 {
     private readonly IContactService _contactService;
+    private readonly IMessageService _messageService;
     
     // Property for binding
     public ObservableCollection<string> Items { get; set; }
@@ -31,6 +33,9 @@ public partial class MainWindow : Window
 
         _contactService = services.GetService<IContactService>()
                           ?? throw new InvalidOperationException("IContactService is not registered");
+        
+        _messageService = services.GetService<IMessageService>()
+                          ?? throw new InvalidOperationException("IErrorMessage is not registered");
         
         InitializeComponent();
 
@@ -70,17 +75,29 @@ public partial class MainWindow : Window
     
     private void OnAdd_Click(object sender, RoutedEventArgs e)
     {
+        if (string.IsNullOrWhiteSpace(NameInput.Text) || 
+            string.IsNullOrWhiteSpace(LastNameInput.Text) || 
+            string.IsNullOrWhiteSpace(EmailInput.Text) || 
+            string.IsNullOrWhiteSpace(PhoneInput.Text)|| 
+            string.IsNullOrWhiteSpace(StreetAddressInput.Text) || 
+            string.IsNullOrWhiteSpace(PostalCodeInput.Text) || 
+            string.IsNullOrWhiteSpace(CityInput.Text))
+        {
+            _messageService.Show(this, "Please fill all fields before adding the contact ");
+            return;
+        }
+        
         var contact = new Contact()
         {
-            FirstName = NameInput.Text!.Trim(),
-            LastName = LastNameInput.Text!.Trim(),
-            Email = EmailInput.Text!.Trim(),
-            Phone = PhoneInput.Text!.Trim(),
-            StreetAddress = StreetAddressInput.Text!.Trim(),
-            PostalCode = PostalCodeInput.Text!.Trim(),
-            City = CityInput.Text!.Trim(),
+            FirstName = NameInput.Text.Trim(),
+            LastName = LastNameInput.Text.Trim(),
+            Email = EmailInput.Text.Trim(),
+            Phone = PhoneInput.Text.Trim(),
+            StreetAddress = StreetAddressInput.Text.Trim(),
+            PostalCode = PostalCodeInput.Text.Trim(),
+            City = CityInput.Text.Trim(),
         };
-        
+       
          // Add the contact to the service
         _contactService.AddContact(contact);
         

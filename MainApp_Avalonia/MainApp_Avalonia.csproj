@@ -25,4 +25,8 @@
         <!-- Add Business project as a reference -->
         <ProjectReference Include="..\Business\Business.csproj" />
     </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Views\" />
+    </ItemGroup>
 </Project>

@@ -24,6 +24,7 @@ public class MenuDialog(IContactService contactService)
             Console.WriteLine("-------- MAIN MENU --------");
             Console.WriteLine("1) Add New Contact");
             Console.WriteLine("2) View All Contacts");
+            Console.WriteLine("3) Edit Contact");
             Console.WriteLine("Select Option: ");
             var option = Console.ReadLine();
             
@@ -34,6 +35,9 @@ public class MenuDialog(IContactService contactService)
                     break;
                 case "2":
                     ViewAllContacts();
+                    break;
+                case "3":
+                    EditContact();
                     break;
             }
         }
@@ -103,5 +107,14 @@ public class MenuDialog(IContactService contactService)
 
         if (!_initializing)
             Console.ReadKey();
+    }
+
+    public void EditContact()
+    { 
+        ViewAllContacts();
+
+        var contact = ContactFactory.Edit();
+        Console.WriteLine("-------- Edit CONTACT --------");
+        
     }
 }

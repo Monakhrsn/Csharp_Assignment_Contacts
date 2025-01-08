@@ -6,4 +6,7 @@ public interface IContactService
 {
     bool AddContact(Contact contact);
     IEnumerable<Contact> GetAllContacts();
+    
+    void UpdateContact(Contact updatedContact);
+    
 }

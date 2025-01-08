@@ -23,6 +23,11 @@ public class ContactService(IFileService fileService) : IContactService
         return _contacts;
     }
 
+    public void UpdateContact(Contact updatedContact)
+    {
+        throw new NotImplementedException();
+    }
+
     public void SaveContactsToList()
     {
         var jsonSerializerOptions = new JsonSerializerOptions { WriteIndented = true };
@@ -36,6 +41,23 @@ public class ContactService(IFileService fileService) : IContactService
         if (!string.IsNullOrEmpty(json))
         {
             _contacts = JsonSerializer.Deserialize<List<Contact>>(json)!;
+        }
+    }
+
+    public void Update(Contact updatedContact)
+    {
+        var contact = _contacts.FirstOrDefault(c => c.Id == updatedContact.Id);
+        if (contact != null)
+        {
+            contact.FirstName = updatedContact.FirstName;
+            contact.LastName = updatedContact.LastName;
+            contact.Email = updatedContact.Email;
+            contact.Phone = updatedContact.Phone;
+            contact.StreetAddress = updatedContact.StreetAddress;
+            contact.PostalCode = updatedContact.PostalCode;
+            contact.City = updatedContact.City;
+            
+            SaveContactsToList();
         }
     }
 }

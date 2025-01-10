@@ -1,0 +1,33 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="MainApp_Avalonia.ContactFormControl">
+    <StackPanel x:Name="ContactForm" Grid.Column="1" Margin="25,0,0,20">
+        <Label Content="Insert name: "/>
+        <TextBox x:Name="NameInput" Margin="0,5,0,5" Padding="5"/>
+        
+        <Label Content="Insert last name: "/>
+        <TextBox x:Name="LastNameInput" Margin="0,5,0,5" Padding="5"/>
+        
+        <Label Content="Insert email : "/>
+        <TextBox x:Name="EmailInput" Margin="0,5,0,5" Padding="5"/>
+        
+        <Label Content="Insert phone number: "/>
+        <TextBox x:Name="PhoneInput" Margin="0,5,0,5" Padding="5"/>
+        
+        <Label Content="Insert street address: "/>
+        <TextBox x:Name="StreetAddressInput" Margin="0,5,0,5" Padding="5"/>
+        
+        <Label Content="Insert postal code: "/>
+        <TextBox x:Name="PostalCodeInput" Margin="0,5,0,5" Padding="5"/>
+        
+        <Label Content="Insert city: "/>
+        <TextBox x:Name="CityInput" Margin="0,5,0,5" Padding="5"/>
+        
+        <Button x:Name="Save" Content="Save Changes" Padding="10 5" Click="OnUpsertClick" Margin="0 20 50 10" FontWeight="Bold"/>
+        
+        <Button x:Name="Cancel" Content="Cancel" Padding="10 5" Click="OnCancelClick" Margin="0 20 50 10" FontWeight="Bold"/>
+    </StackPanel>
+</UserControl>

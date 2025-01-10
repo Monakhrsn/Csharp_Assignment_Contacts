@@ -1,0 +1,39 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:model="using:Business.Models"
+             xmlns:viewModels="clr-namespace:MainApp_Avalonia.ViewModels"
+             x:Class="MainApp_Avalonia.ContactListControl">
+    <ListBox x:Name="Contacts"
+             Margin="10,0,0,0"
+             Background="#152323"
+             ItemsSource="{Binding Contacts}"
+             x:DataType="viewModels:ContactListViewModel"
+             CornerRadius="10">
+        <ListBox.ItemTemplate>
+            <DataTemplate DataType="model:Contact">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="{Binding DisplayName}"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Left"
+                               Margin="5"
+                               Grid.Column="0"/>
+                    <Button x:Name="Edit"
+                            Content="Edit"
+                            Padding="10 5"
+                            Click="OnEditClick"
+                            CommandParameter="{Binding}"
+                            Margin="5"
+                            FontWeight="Bold"
+                            Grid.Column="1"/>
+                </Grid>
+            </DataTemplate>
+        </ListBox.ItemTemplate>
+    </ListBox>
+</UserControl>

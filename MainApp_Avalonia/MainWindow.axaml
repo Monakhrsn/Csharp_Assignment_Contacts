@@ -17,72 +17,15 @@
 
         <!-- Button in the first column -->
         <StackPanel Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <!-- First Button -->
-            <Button Content="Contact list" Click="OnShowList" Margin="0,0,0,10" FontWeight="Bold" FontFamily=""/>
-            <!-- Second Button -->
             <Button Content="Add Contact" Click="OnShowForm" FontWeight="Bold"/>
         </StackPanel>
-
-        <!-- ListBox in the second column -->
-        <ListBox x:Name="Contacts" 
-                 Grid.Column="1" 
-                 Margin="10,0,0,0" 
-                 ItemsSource="{Binding Items}" 
-                 SelectionChanged="OnContactSelected" 
-                 Background="#152323" 
-                 CornerRadius="10">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Text="{Binding DisplayName}"
-                                   VerticalAlignment="Center"
-                                   HorizontalAlignment="Left"
-                                   Margin="5"
-                                   Grid.Column="0"/>
-                        <Button x:Name="Edit" 
-                                Content="Edit" 
-                                Padding="10 5" 
-                                Click="OnEdit_Click" 
-                                Margin="5" 
-                                FontWeight="Bold"
-                                Grid.Column="1"/>
-                    </Grid>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
         
-        <!-- ContactForm in the second column --> 
-        <StackPanel x:Name="ContactForm" Grid.Column="1" IsVisible="False" Margin="25,0,0,20">
-            <Label Content="Insert name: "/>
-            <TextBox x:Name="NameInput" Margin="0,5,0,5" Padding="5"/>
-            
-            <Label Content="Insert last name: "/>
-            <TextBox x:Name="LastNameInput" Margin="0,5,0,5" Padding="5"/>
-            
-            <Label Content="Insert email : "/>
-            <TextBox x:Name="EmailInput" Margin="0,5,0,5" Padding="5"/>
-            
-            <Label Content="Insert phone number: "/>
-            <TextBox x:Name="PhoneInput" Margin="0,5,0,5" Padding="5"/>
-            
-            <Label Content="Insert street address: "/>
-            <TextBox x:Name="StreetAddressInput" Margin="0,5,0,5" Padding="5"/>
-            
-            <Label Content="Insert postal code: "/>
-            <TextBox x:Name="PostalCodeInput" Margin="0,5,0,5" Padding="5"/>
-            
-            <Label Content="Insert city: "/>
-            <TextBox x:Name="CityInput" Margin="0,5,0,5" Padding="5"/>
-            
-            <Button x:Name="Add" Content="Add" Padding="10 5" Click="OnAdd_Click" Margin="0 20 50 10" FontWeight="Bold"/>
+        <!-- Content Area (Second Column) -->
+        <ContentControl x:Name="ContentArea" Grid.Column="1"/>
+        
 
-            <Button x:Name="Save" Content="Save Changes" Padding="10 5" Click="OnSave_Click" Margin="0 20 50 10" FontWeight="Bold"/>
-
-            <Button x:Name="Cancel" Content="Cancel" Padding="10 5" Click="OnCancel_Click" Margin="0 20 50 10" FontWeight="Bold"/>
-        </StackPanel>
+        <!-- -->
+        <!-- ~1~ ContactForm in the second column @1@  -->
+        
     </Grid>
 </Window>

@@ -29,7 +29,15 @@ public partial class ContactListControl : UserControl
         var button = (Button)sender;
         var contact = button.CommandParameter as Contact;
         _parent.ContentArea.Content = new ContactFormControl(_contactService, _messageService, _parent, contact!);
-
+    }
+    
+    private void OnDeleteClick(object sender, RoutedEventArgs e)
+    {
+        var button = (Button)sender;
+        var contact = button.CommandParameter as Contact;
+        _contactService.DeleteContact(contact.Id);
+        DataContext = new ContactListViewModel(_contactService.GetAllContacts());
+        _messageService.Show(_parent, "Contact deleted successfully.");
     }
     
     private void InitializeComponent()

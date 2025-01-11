@@ -11,5 +11,11 @@ public class Contact
     public string PostalCode { get; set; } = null!;
     public string City { get; set; } = null!;
     public string DisplayName => $"{FirstName} {LastName}";
+    public string DisplayEmail => $"{Email}";
+    public string DisplayPhone => $"{Phone}";
+    public string DisplayAddress => $"{StreetAddress}, {PostalCode}, {City}";
+
+
+
 
 }

@@ -15,8 +15,6 @@ public partial class ContactFormControl : UserControl
     private readonly IMessageService _messageService;
     private readonly MainWindow _parent;
     private readonly Contact? _contact;
-
-    public Contact? SelectedContact { get; set; }
     
     public ContactFormControl(IContactService contactService, IMessageService messageService, MainWindow parent)
     {
@@ -24,7 +22,7 @@ public partial class ContactFormControl : UserControl
         _contactService = contactService;
         _messageService = messageService;
         _contact = null;
-
+        
         InitializeComponent();
     }
     
@@ -34,12 +32,28 @@ public partial class ContactFormControl : UserControl
         _messageService = messageService;
         _parent = parent;
         _contact = contact;
-
+        
         InitializeComponent();
+
+        // Pre-fill the form fields with contact data
+        NameInput.Text = _contact?.FirstName;
+        LastNameInput.Text = _contact?.LastName;
+        EmailInput.Text = _contact?.Email;
+        PhoneInput.Text = _contact?.Phone;
+        StreetAddressInput.Text = _contact?.StreetAddress;
+        PostalCodeInput.Text = _contact?.PostalCode;
+        CityInput.Text = _contact?.City;
     }
 
     private void OnUpsertClick(object sender, RoutedEventArgs e)
     {
+        
+        if (_isFormInvalid())
+        {
+            _messageService.Show(_parent, "Please fill all fields before adding the contact ");
+            return;
+        };
+        
         if (_contact == null)
             OnAddContact();
         else
@@ -49,6 +63,38 @@ public partial class ContactFormControl : UserControl
 
     private void OnAddContact()
     {
+        var contact = new Contact()
+        {
+            FirstName = NameInput.Text!.Trim(),
+            LastName = LastNameInput.Text!.Trim(),
+            Email = EmailInput.Text!.Trim(),
+            Phone = PhoneInput.Text!.Trim(),
+            StreetAddress = StreetAddressInput.Text!.Trim(),
+            PostalCode = PostalCodeInput.Text!.Trim(),
+            City = CityInput.Text!.Trim(),
+        };
+           
+        // Add the contact to the service
+        _contactService.AddContact(contact);
+            
+        // Clear the input fields
+        // NameInput.Text = string.Empty;
+        // LastNameInput.Text = string.Empty;
+        // EmailInput.Text = string.Empty; 
+        // PhoneInput.Text = string.Empty;
+        // StreetAddressInput.Text = string.Empty;
+        // PostalCodeInput.Text = string.Empty;
+        // CityInput.Text = string.Empty;
+            
+        //Navigate back to the contact list
+        _parent.ContentArea.Content = new ContactListControl(_contactService, _messageService, _parent);
+        
+        _messageService.Show(_parent, "Contact added successfully");
+        
+    }
+
+    private bool _isFormInvalid()
+    {
         if (string.IsNullOrWhiteSpace(NameInput.Text) || 
             string.IsNullOrWhiteSpace(LastNameInput.Text) || 
             string.IsNullOrWhiteSpace(EmailInput.Text) || 
@@ -57,65 +103,35 @@ public partial class ContactFormControl : UserControl
             string.IsNullOrWhiteSpace(PostalCodeInput.Text) || 
             string.IsNullOrWhiteSpace(CityInput.Text))
         {
-            // _messageService.Show(this, "Please fill all fields before adding the contact ");
-            return;
+            return true;
         }
-            
-        var contact = new Contact()
-        {
-            FirstName = NameInput.Text.Trim(),
-            LastName = LastNameInput.Text.Trim(),
-            Email = EmailInput.Text.Trim(),
-            Phone = PhoneInput.Text.Trim(),
-            StreetAddress = StreetAddressInput.Text.Trim(),
-            PostalCode = PostalCodeInput.Text.Trim(),
-            City = CityInput.Text.Trim(),
-        };
-           
-        // Add the contact to the service
-        _contactService.AddContact(contact);
-            
-        // Clear the input fields
-        NameInput.Text = string.Empty;
-        LastNameInput.Text = string.Empty;
-        EmailInput.Text = string.Empty; 
-        PhoneInput.Text = string.Empty;
-        StreetAddressInput.Text = string.Empty;
-        PostalCodeInput.Text = string.Empty;
-        CityInput.Text = string.Empty;
-            
-        // Hide the form and show the contact list view
-        ContactForm.IsVisible = false;
+
+        return false;
     }
-    
+
     private void OnEditContact()
     {
-        if (SelectedContact == null)
+        var updatedContact = new Contact()
         {
-            // _messageService.Show(this, "Please select a contact to save");
-            return;
-    
-        }
-    
-        //Update the selected contact with new details 
-        SelectedContact.FirstName = NameInput.Text!.Trim();
-        SelectedContact.LastName = LastNameInput.Text!.Trim();
-        SelectedContact.Email = EmailInput.Text!.Trim();
-        SelectedContact.Phone = PhoneInput.Text!.Trim();
-        SelectedContact.StreetAddress = StreetAddressInput.Text!.Trim();
-        SelectedContact.PostalCode = PostalCodeInput.Text!.Trim();
-        SelectedContact.City = CityInput.Text!.Trim();
+            Id = _contact!.Id,
+            FirstName = NameInput.Text!.Trim(),
+            LastName = LastNameInput.Text!.Trim(),
+            Email = EmailInput.Text!.Trim(),
+            Phone = PhoneInput.Text!.Trim(),
+            StreetAddress = StreetAddressInput.Text!.Trim(),
+            PostalCode = PostalCodeInput.Text!.Trim(),
+            City = CityInput.Text!.Trim(),
+        };
         
         //Update the service
-        _contactService.UpdateContact(SelectedContact);
+        _contactService.UpdateContact(updatedContact);
         
-        //Refresh the UI
-        // Items?.Clear();
-        // LoadContacts();
+        //Navigate back to the contact list
+        _parent.ContentArea.Content = new ContactListControl(_contactService, _messageService, _parent);
         
-        //Reset UI
-        ContactForm.IsVisible = false;
+        _messageService.Show(_parent, "Contact updated successfully");
     }
+    
     
     private void OnCancelClick(object sender, RoutedEventArgs e)
     {

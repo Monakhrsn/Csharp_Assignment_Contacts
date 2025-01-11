@@ -22,10 +22,5 @@
         
         <!-- Content Area (Second Column) -->
         <ContentControl x:Name="ContentArea" Grid.Column="1"/>
-        
-
-        <!-- -->
-        <!-- ~1~ ContactForm in the second column @1@  -->
-        
     </Grid>
 </Window>

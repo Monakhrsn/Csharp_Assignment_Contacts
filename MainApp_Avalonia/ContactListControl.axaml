@@ -15,6 +15,13 @@
         <ListBox.ItemTemplate>
             <DataTemplate DataType="model:Contact">
                 <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="Auto" />
@@ -23,15 +30,44 @@
                                VerticalAlignment="Center"
                                HorizontalAlignment="Left"
                                Margin="5"
-                               Grid.Column="0"/>
-                    <Button x:Name="Edit"
-                            Content="Edit"
+                               Grid.Column="0"
+                               Grid.Row="0"/>
+                    <TextBlock Text="{Binding DisplayEmail}"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Left"
+                               Margin="5"
+                               Grid.Column="0"
+                               Grid.Row="1"/>
+                    <TextBlock Text="{Binding DisplayPhone}"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Left"
+                               Margin="5"
+                               Grid.Column="0"
+                               Grid.Row="2"/>
+                    <TextBlock Text="{Binding DisplayAddress}"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Left"
+                               Margin="5"
+                               Grid.Column="0"
+                               Grid.Row="3"/>
+                    <!-- <Button x:Name="Edit" -->
+                    <!--         Content="Edit" -->
+                    <!--         Padding="10 5" -->
+                    <!--         Click="OnEditClick" -->
+                    <!--         CommandParameter="{Binding}" -->
+                    <!--         Margin="5" -->
+                    <!--         FontWeight="Bold" -->
+                    <!--         Grid.Column="1" -->
+                    <!--         Grid.Row="4"/> -->
+                    <Button x:Name="Delete"
+                            Content="Delete"
                             Padding="10 5"
-                            Click="OnEditClick"
+                            Click="OnDeleteClick"
                             CommandParameter="{Binding}"
                             Margin="5"
                             FontWeight="Bold"
-                            Grid.Column="1"/>
+                            Grid.Column="2"
+                            Grid.Row="5"/>
                 </Grid>
             </DataTemplate>
         </ListBox.ItemTemplate>

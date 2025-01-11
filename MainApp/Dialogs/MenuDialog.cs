@@ -24,7 +24,6 @@ public class MenuDialog(IContactService contactService)
             Console.WriteLine("-------- MAIN MENU --------");
             Console.WriteLine("1) Add New Contact");
             Console.WriteLine("2) View All Contacts");
-            Console.WriteLine("3) Edit Contact");
             Console.WriteLine("Select Option: ");
             var option = Console.ReadLine();
             

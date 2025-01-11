@@ -8,10 +8,4 @@ public static class ContactFactory
     {
         return new Contact();
     }
-    
-    public static Contact Edit()
-    {
-        return new Contact();
-    }
-    
 }

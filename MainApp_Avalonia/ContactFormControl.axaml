@@ -5,25 +5,25 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="MainApp_Avalonia.ContactFormControl">
     <StackPanel x:Name="ContactForm" Grid.Column="1" Margin="25,0,0,20">
-        <Label Content="Insert name: "/>
+        <Label Content="First name: "/>
         <TextBox x:Name="NameInput" Margin="0,5,0,5" Padding="5"/>
         
-        <Label Content="Insert last name: "/>
+        <Label Content="Last name: "/>
         <TextBox x:Name="LastNameInput" Margin="0,5,0,5" Padding="5"/>
         
-        <Label Content="Insert email : "/>
+        <Label Content="Email : "/>
         <TextBox x:Name="EmailInput" Margin="0,5,0,5" Padding="5"/>
         
-        <Label Content="Insert phone number: "/>
+        <Label Content="Phone number: "/>
         <TextBox x:Name="PhoneInput" Margin="0,5,0,5" Padding="5"/>
         
-        <Label Content="Insert street address: "/>
+        <Label Content="Street address: "/>
         <TextBox x:Name="StreetAddressInput" Margin="0,5,0,5" Padding="5"/>
         
-        <Label Content="Insert postal code: "/>
+        <Label Content="Postal code: "/>
         <TextBox x:Name="PostalCodeInput" Margin="0,5,0,5" Padding="5"/>
         
-        <Label Content="Insert city: "/>
+        <Label Content="City: "/>
         <TextBox x:Name="CityInput" Margin="0,5,0,5" Padding="5"/>
         
         <Grid Margin="0 20 0 10">

@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using MainApp.Dialogs;
 
 var serviceProvider = new ServiceCollection()
-    .AddSingleton<IFileService>(new FileService("Data", "contacts.json"))
+    .AddSingleton<IFileService>(new FileService("Data", "Contacts.json"))
     .AddSingleton<IContactService, ContactService>()
     .AddSingleton<MenuDialog>()
     .BuildServiceProvider();

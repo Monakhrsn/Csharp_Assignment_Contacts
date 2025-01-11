@@ -112,7 +112,7 @@ public class MenuDialog(IContactService contactService)
     { 
         ViewAllContacts();
 
-        var contact = ContactFactory.Edit();
+        var contact = ContactFactory.Create();
         Console.WriteLine("-------- Edit CONTACT --------");
         
     }

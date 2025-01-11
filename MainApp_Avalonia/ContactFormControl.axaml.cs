@@ -3,6 +3,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
+using Business.Factories;
 using Business.Interfaces;
 using Business.Models;
 using MainApp_Avalonia.Services;
@@ -76,16 +77,7 @@ public partial class ContactFormControl : UserControl
            
         // Add the contact to the service
         _contactService.AddContact(contact);
-            
-        // Clear the input fields
-        // NameInput.Text = string.Empty;
-        // LastNameInput.Text = string.Empty;
-        // EmailInput.Text = string.Empty; 
-        // PhoneInput.Text = string.Empty;
-        // StreetAddressInput.Text = string.Empty;
-        // PostalCodeInput.Text = string.Empty;
-        // CityInput.Text = string.Empty;
-            
+        
         //Navigate back to the contact list
         _parent.ContentArea.Content = new ContactListControl(_contactService, _messageService, _parent);
         
@@ -131,8 +123,7 @@ public partial class ContactFormControl : UserControl
         
         _messageService.Show(_parent, "Contact updated successfully");
     }
-    
-    
+
     private void OnCancelClick(object sender, RoutedEventArgs e)
     {
         _parent.ContentArea.Content = new ContactListControl(_contactService, _messageService, _parent);

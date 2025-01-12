@@ -31,6 +31,20 @@ public class ContactService_Tests
     }
     
     [Fact]
+    public void AddContact_ShouldReturnFalse_WhenContactCreationFails()
+    {
+        // Arrange
+        _fileServiceMock.Setup(fs => fs.SaveContentToFile(It.IsAny<string>())).Returns(false);
+        var contact = new Contact();
+        
+        // Act
+        var result = _contactService.AddContact(contact);
+        
+        // Assert
+        Assert.False(result);
+    }
+    
+    [Fact]
     public void GetAllContacts_ShouldReturnContacts_WhenContentIsRetrievedFromFileSuccessfully()
     {
         // Arrange
@@ -85,5 +99,130 @@ public class ContactService_Tests
         Assert.Equal(expectedContacts.Last().StreetAddress, result.Last().StreetAddress);
         Assert.Equal(expectedContacts.Last().PostalCode, result.Last().PostalCode);
         Assert.Equal(expectedContacts.Last().City, result.Last().City);
+    }
+
+    [Fact]
+    public void GetAllContacts_ShouldReturnEmptyList_WhenContentIsEmpty()
+    {
+        // Arrange
+        // This string(The mockedJsonFileContent value) simulates the contents of a file that the ContactService would read using its PopulateContentFromFile method.
+        
+        var mockedJsonFileContent = "";
+
+        _fileServiceMock.Setup(fs => fs.GetContentFromFile()).Returns(mockedJsonFileContent);
+        
+        // Act
+        var result = _contactService.GetAllContacts();
+        
+        // Assert
+        Assert.Empty(result);
+    }
+    
+    [Fact]
+    public void GetAllContacts_ShouldReturnEmptyList_WhenContentIsNull()
+    {
+        // Arrange
+
+        _fileServiceMock.Setup(fs => fs.GetContentFromFile()).Returns((string) null);
+        
+        // Act
+        var result = _contactService.GetAllContacts();
+        
+        // Assert
+        Assert.Empty(result);
+    }
+    
+    [Fact]
+    public void UpdateContacts_ShouldReturnTrue_WhenContactExists()
+    {
+        // Arrange
+
+        var contact = new Contact()
+        {
+            Id = "1",
+            FirstName = "Sara",
+        };
+        
+        _contactService.AddContact(contact);
+        _fileServiceMock.Setup(fs => fs.SaveContentToFile(It.IsAny<string>())).Returns(true);
+        
+        // Act
+        var updatedContact = new Contact()
+        {
+            Id = "1",
+            FirstName = "Mona",
+        };
+        
+        var result = _contactService.UpdateContact(updatedContact);
+        
+        // Assert
+        Assert.True(result);
+        Assert.Equal("Mona", _contactService.GetAllContacts().First().FirstName);
+        
+        // This should be two because we also call the method when saved the contact initially
+        _fileServiceMock.Verify(fs => fs.SaveContentToFile(It.IsAny<string>()), Times.Exactly(2));
+    }
+    
+    [Fact]
+    public void UpdateContacts_ShouldReturnFalse_WhenContactDoesNotExists()
+    {
+        // Arrange
+
+        // Act
+        var updatedContact = new Contact()
+        {
+            Id = "1",
+            FirstName = "Mona",
+        };
+        
+        var result = _contactService.UpdateContact(updatedContact);
+        
+        // Assert
+        Assert.False(result);
+        
+        // Assert it never calls the file service
+        _fileServiceMock.Verify(fs => fs.SaveContentToFile(It.IsAny<string>()), Times.Never);
+    }
+    
+    [Fact]
+    public void DeleteContact_ShouldReturnTrue_WhenContactExists()
+    {
+        // Arrange
+
+        var contact = new Contact()
+        {
+            Id = "1",
+            FirstName = "Sara",
+        };
+        
+        _contactService.AddContact(contact);
+        _fileServiceMock.Setup(fs => fs.SaveContentToFile(It.IsAny<string>())).Returns(true);
+        
+        // Act
+        
+        var result = _contactService.DeleteContact(contact.Id);
+        
+        // Assert
+        Assert.True(result);
+        Assert.Empty(_contactService.GetAllContacts());
+        
+        // This should be two because we also call the method when saved the contact initially
+        _fileServiceMock.Verify(fs => fs.SaveContentToFile(It.IsAny<string>()), Times.Exactly(2));
+    }
+    
+    [Fact]
+    public void DeleteContact_ShouldReturnFalse_WhenContactDoesNotExist()
+    {
+        // Arrange
+        
+        // Act
+        
+        var result = _contactService.DeleteContact("1");
+        
+        // Assert
+        Assert.False(result); ;
+        
+        // This should be two because we also call the method when saved the contact initially
+        _fileServiceMock.Verify(fs => fs.SaveContentToFile(It.IsAny<string>()), Times.Never);
     }
 }

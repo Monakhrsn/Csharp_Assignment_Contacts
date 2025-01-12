@@ -27,11 +27,12 @@ public class FileService : IFileService
                 Directory.CreateDirectory(_directoryPath);
 
             File.WriteAllText(_filePath, content);
+            return true;
         }
         catch (Exception ex)
         {
             Debug.WriteLine(ex.Message);
+            return false;
         }
-        return true;
     }
 }

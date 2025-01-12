@@ -12,9 +12,7 @@ public class ContactService(IFileService fileService) : IContactService
     public bool AddContact(Contact contact)
     {
         _contacts.Add(contact);
-        SaveContactsToList();
-        
-        return true;
+        return SaveContactsToList();
     }
     
     public IEnumerable<Contact> GetAllContacts()
@@ -23,38 +21,45 @@ public class ContactService(IFileService fileService) : IContactService
         return _contacts;
     }
 
-    public void UpdateContact(Contact updatedContact)
+    public bool UpdateContact(Contact updatedContact)
     {
         var contact = _contacts.FirstOrDefault(c => c.Id == updatedContact.Id);
-        if (contact != null)
-        {
-            contact.FirstName = updatedContact.FirstName;
-            contact.LastName = updatedContact.LastName;
-            contact.Email = updatedContact.Email;
-            contact.Phone = updatedContact.Phone;
-            contact.StreetAddress = updatedContact.StreetAddress;
-            contact.PostalCode = updatedContact.PostalCode;
-            contact.City = updatedContact.City;
-        }
+
         
-        SaveContactsToList();
+        if (contact == null)
+            return false;
+        
+        contact.FirstName = updatedContact.FirstName;
+        contact.LastName = updatedContact.LastName;
+        contact.Email = updatedContact.Email;
+        contact.Phone = updatedContact.Phone;
+        contact.StreetAddress = updatedContact.StreetAddress;
+        contact.PostalCode = updatedContact.PostalCode;
+        contact.City = updatedContact.City;
+        
+        return SaveContactsToList();
     }
 
-    public void DeleteContact(string contactId)
+    public bool DeleteContact(string contactId)
     {
-        _contacts.RemoveAll(c => c.Id == contactId);
+        var contact = _contacts.FirstOrDefault(c => c.Id == contactId);
+
+        if (contact == null)
+            return false;
         
-        SaveContactsToList();
+        _contacts.Remove(contact);
+        
+        return SaveContactsToList();
     }
 
-    public void SaveContactsToList()
+    private bool SaveContactsToList()
     {
         var jsonSerializerOptions = new JsonSerializerOptions { WriteIndented = true };
         var json = JsonSerializer.Serialize(_contacts, jsonSerializerOptions);
-        _fileService.SaveContentToFile(json);
+        return _fileService.SaveContentToFile(json);
     }
 
-    public void PopulateContentFromFile()
+    private void PopulateContentFromFile()
     {
         var json = _fileService.GetContentFromFile();
         if (!string.IsNullOrEmpty(json))
